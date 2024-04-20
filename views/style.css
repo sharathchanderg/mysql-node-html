@@ -1,0 +1,126 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* anchor tag */
+/* CSS for header links */
+header a {
+  text-decoration: none;
+  margin-right: 20px; /* Add spacing between links */
+}
+
+/* CSS for clicked and hover effects */
+header a:visited,
+header a:hover,
+header a:focus {
+  font-weight: bold;
+  color: #ffffff; /* Change the color on hover */
+}
+
+header {
+  background-color: black;
+  display: flex;
+  /* justify-content: space-between; */
+  padding: 20px 20px;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+header a.active {
+  font-weight: bold;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.about-content {
+  text-align: center;
+}
+
+.about-content img {
+  width: 600px;
+  border-radius: 10px;
+}
+
+.about-content p {
+  margin-top: 20px;
+}
+
+/* Same as About page CSS with additional styles for table */
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table th,
+.students-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.students-table th {
+  background-color: #f2f2f2;
+}
+
+.students-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Same as About page CSS with additional styles for table */
+.books-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.books-table td,
+.books-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.books-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.books-table tr:hover {
+  background-color: #ddd;
+}
+
+.books-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #201e20;
+  color: white;
+}
+/* Same as About page CSS with additional styles for articles */
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.article {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.article h2 {
+  margin-top: 0;
+}
+
+.article p {
+  margin-bottom: 10px;
+}
