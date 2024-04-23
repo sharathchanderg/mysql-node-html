@@ -1,243 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Management</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-    <style>
-      /* Paste the CSS styles here */
-      body {
-        font-family: "Roboto", sans-serif;
-        text-decoration: none;
-        text-align: justify;
-      }
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Management</title>
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+<style>
+/* Paste the CSS styles here */
+body {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  text-align: justify;
+}
 
-      #books {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-      }
+#books {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-      #books td,
-      #books th {
-        border: 1px solid #ddd;
-        padding: 8px;
-      }
+#books td,
+#books th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
-      #books tr:nth-child(even) {
-        background-color: #f2f2f2;
-      }
+#books tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-      #books tr:hover {
-        background-color: #ddd;
-      }
+#books tr:hover {
+  background-color: #ddd;
+}
 
-      #books th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #454645;
-        color: white;
-      }
+#books th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #454645;
+  color: white;
+}
 
-      /* Add style for the "Add Book" button */
-      .add-button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: black;
-        color: white;
-        text-decoration: none;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
+/* Add style for the "Add Book" button */
+.add-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-      .add-button:hover {
-        background-color: #333;
-      }
+.add-button:hover {
+  background-color: #333;
+}
 
-      /* Add style for form inputs and buttons */
-      .form-container {
-        max-width: 400px;
-        margin: 20px auto;
-      }
+/* Add style for form inputs and buttons */
+.form-container {
+  max-width: 400px;
+  margin: 20px auto;
+}
 
-      .form-container input[type="text"],
-      .form-container input[type="email"],
-      .form-container input[type="tel"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-      .form-container button[type="submit"] {
-        background-color: black;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
+.form-container button[type="submit"] {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-      .form-container button[type="submit"]:hover {
-        background-color: #333;
-      }
+.form-container button[type="submit"]:hover {
+  background-color: #333;
+}
 
-      /* CSS for clicked and hover effects */
-      header a:visited,
-      header a:hover,
-      header a:focus {
-        font-weight: bold;
-        color: #ffffff; /* Change the color on hover */
-      }
+/* CSS for clicked and hover effects */
+header a:visited,
+header a:hover,
+header a:focus {
+  font-weight: bold;
+  color: #ffffff; /* Change the color on hover */
+}
 
-      header {
-        background-color: #757fa6;
-        display: flex;
-        /* justify-content: space-between; */
-        padding: 20px 20px;
-      }
+header {
+  background-color: #757fa6;
+  display: flex;
+  /* justify-content: space-between; */
+  padding: 20px 20px;
+}
 
-      header a {
-        color: white;
-        text-decoration: none;
-        margin-right: 20px;
-      }
+header a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
 
-      header a.active {
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <a href="/about">HOME</a>
-      <a href="/students">STUDENTS</a>
-      <a href="/books" class="active">BOOKS</a>
-    </header>
+header a.active {
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<header>
+  <a href="/about">HOME</a>
+  <a href="/students">STUDENTS</a>
+  <a href="/books" class="active">BOOKS</a>
+</header>
 
-    <% if (view === 'index') { %>
-    <h1>Books</h1>
-    <!-- <a href="/add" class="add-button">Add Book</a> -->
-    <a href="/books/add" class="add-button">Add Book</a>
-    <br /><br />
-    <table id="books">
-      <thead>
-        <tr>
-          <th>S. no</th>
-          <th>Book Id</th>
-          <th>Category</th>
-          <th>Book Name</th>
-          <th>Published Date</th>
-          <th>Copies owned</th>
-          <th>Author</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% let serialNumber = 1; %>
-        <!-- Initialize a counter variable -->
-        <% books.forEach(book => { %>
-        <tr>
-          <td><%= serialNumber %></td>
-          <!-- Display serial number -->
-          <td><%= book.book_id %></td>
-          <td><%= book.category_name %></td>
-          <td><%= book.title %></td>
-          <td><%= book.publication_date %></td>
-          <td><%= book.copies_owned %></td>
-          <td><%= book.author %></td> 
-          <td>
-            <a href="/books/edit/<%= book.id %>">Edit</a>
-            <a href="/books/delete/<%= book.id %>">Delete</a>
-          </td>
-        </tr>
-        <% serialNumber++; %>
-        <!-- Increment the serial number -->
-        <% }); %>
-      </tbody>
-    </table>
-    <br />
-    <!-- <a href="/add" class="add-button">Add Book</a> -->
-    <% } else if (view === 'add') { %>
-    <div class="form-container">
-      <h1>Add</h1>
-      <form action="/books/add" method="POST">
-        <input
-          type="text"
-          name="book_id"
-          placeholder="Book Id"
-          required
-        /><br />
-        <input
-          type="text"
-          name="category_name"
-          placeholder="Category name"
-          required
-        /><br />
-        <input type="text" name="title" placeholder="Name" required /><br />
-        <input
-          type="text"
-          name="publication_date"
-          placeholder="Published Date"
-          required
-        /><br />
-        <input
-          type="text"
-          name="copies_owned"
-          placeholder="Copies owned"
-          required
-        /><br />
-        <input type="text" name="author" placeholder="Author" required /><br />
-        <button type="submit">Add Book</button>
-      </form>
-    </div>
-    <% } else if (view === 'edit') { %>
-    <div class="form-container">
-      <h1>Update</h1>
-      <form action="/books/edit/<%= book.id %>" method="POST">
-        <input
-          type="text"
-          name="book_id"
-          value="<%= book.book_id %>"
-          required
-        /><br />
-        <input
-          type="text"
-          name="Category name"
-          value="<%= book.category_name %>"
-          required
-        /><br />
-        <input
-          type="text"
-          name="title"
-          value="<%= book.title %>"
-          required
-        /><br />
-        <input
-          type="text"
-          name="publication_date"
-          value="<%= book.publication_date %>"
-          required
-        /><br />
-        <input
-          type="text"
-          name="copies_owned"
-          value="<%= book.copies_owned %>"
-          required
-        /><br />
-        <input
-          type="text"
-          name="author"
-          value="<%= book.author %>"
-          required
-        /><br />
-        <button type="submit">Update Book</button>
-      </form>
-    </div>
-    <% } %>
-  </body>
+<% if (view === 'index') { %>
+<h1>Books</h1>
+<a href="/books/add" class="add-button">Add Book</a>
+<br /><br />
+<table id="books">
+  <thead>
+    <tr>
+      <th>S. no</th>
+      <th>Book Id</th>
+      <th>Category</th>
+      <th>Book Name</th>
+      <th>Published Date</th>
+      <th>Copies owned</th>
+      <th>Author</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% books.forEach((book, index) => { %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= book.book_id %></td>
+      <td><%= book.category_id %></td>
+      <td><%= book.title %></td>
+      <td><%= book.publication_date %></td>
+      <td><%= book.copies_owned %></td>
+      <td><%= book.author %></td> 
+      <td>
+        <a href="/books/edit/<%= book.book_id %>">Edit</a>
+        <a href="/books/delete/<%= book.book_id %>">Delete</a>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<br />
+<% } else if (view === 'add') { %>
+<div class="form-container">
+  <h1>Add</h1>
+  <form action="/books/add" method="POST">
+    <input
+      type="text"
+      name="book_id"
+      placeholder="Book Id"
+      required
+    /><br />
+    <input
+      type="text"
+      name="category_id"
+      placeholder="Category Id"
+      required
+    /><br />
+    <input type="text" name="title" placeholder="Name" required /><br />
+    <input
+      type="text"
+      name="publication_date"
+      placeholder="Published Date"
+      required
+    /><br />
+    <input
+      type="text"
+      name="copies_owned"
+      placeholder="Copies owned"
+      required
+    /><br />
+    <input type="text" name="author" placeholder="Author" required /><br />
+    <button type="submit">Add Book</button>
+  </form>
+</div>
+<% } else if (view === 'edit') { %>
+<div class="form-container">
+  <h1>Update</h1>
+  <form action="/books/edit/<%= book.book_id %>" method="POST">
+    <input
+      type="text"
+      name="category_id"
+      value="<%= book.category_id %>"
+      required
+    /><br />
+    <input
+      type="text"
+      name="title"
+      value="<%= book.title %>"
+      required
+    /><br />
+    <input
+      type="text"
+      name="publication_date"
+      value="<%= book.publication_date %>"
+      required
+    /><br />
+    <input
+      type="text"
+      name="copies_owned"
+      value="<%= book.copies_owned %>"
+      required
+    /><br />
+    <input
+      type="text"
+      name="author"
+      value="<%= book.author %>"
+      required
+    /><br />
+    <button type="submit">Update Book</button>
+  </form>
+</div>
+<% } %>
+</body>
 </html>

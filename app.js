@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.get('/', (req, res) => {
     res.render('about', { view: 'about' }); // Passing the view variable here
-  });
+  }); 
   
 // Assuming you have a route handler for rendering the about page
 app.get('/about', (req, res) => {
@@ -23,3 +23,4 @@ app.use("/books", bookRoutes);
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  
