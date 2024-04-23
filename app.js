@@ -1,10 +1,9 @@
 const express = require("express");
-const mysql = require("mysql");
 const app = express();
 const studentRoutes = require("./routes/studentRoutes");
 const bookRoutes = require("./routes/bookRoutes");
 
-// Middleware
+// Middleware 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
@@ -19,7 +18,7 @@ app.get('/about', (req, res) => {
   });
   
 app.use("/students", studentRoutes);
-app.use("/books", bookRoutes);
+app.use("/books", bookRoutes); 
 
 // Start server
 const PORT = process.env.PORT || 3000;

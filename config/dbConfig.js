@@ -4,9 +4,9 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "project_library",
+  database: "new_table",
 });
-
+ 
 db.connect((err) => {
   if (err) {
     console.error("Error connecting to MySQL: " + err.stack);
@@ -42,15 +42,16 @@ function createStudentsTable() {
     console.log("Students table created successfully");
   });
 }
-
+// book_id, category_name, title, publication_date, copies_owned, author
 function createBooksTable() {
   const createTableQuery = `
     CREATE TABLE IF NOT EXISTS books (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        category VARCHAR(255) NOT NULL,
-        name VARCHAR(255) NOT NULL,
-        publication VARCHAR(255) NOT NULL,
-        description TEXT NOT NULL,
+        book_id VARCHAR(255) NOT NULL,
+        category_name VARCHAR(255) NOT NULL,
+        title VARCHAR(255) NOT NULL,
+        publication_date VARCHAR(255) NOT NULL,
+        copies_owned TEXT NOT NULL,
         author VARCHAR(255) NOT NULL
     )
   `;
